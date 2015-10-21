@@ -21,7 +21,7 @@ function Obj(args) {
 	
 	// Call this from your game draw().
 	// It can draw itself if you pass canvas to it.
-	g.draw = function (canvas) {
+	g.draw = function (spriteBatchs) {
 
 	}
 
