@@ -21,27 +21,47 @@ function Player(x, y, w, h, c) {
 
 	// Call this from your game update().
 	// Pass Keyboard from the game if you want to let this object control itself.
-	g.update = function (k) {
-		if (k.Keys.indexOf("ArrowUp") > -1) {
+	var mLock = false;
+	g.update = function (k, m) {
+		if (k.IsKeyDown("ArrowUp")) {
 			g.y -= 5;
 		}
-		if (k.Keys.indexOf("ArrowDown") > -1) {
+		if (k.IsKeyDown("ArrowDown")) {
 			g.y += 5;
 		}
-		if (k.Keys.indexOf("ArrowLeft") > -1) {
+		if (k.IsKeyDown("ArrowLeft")) {
 			g.x -= 5;
 		}
-		if (k.Keys.indexOf("ArrowRight") > -1) {
+		if (k.IsKeyDown("ArrowRight")) {
 			g.x += 5;
 		}
 
-		g.rect.moveTo(g.x, g.y);
+		if (m.IsButtonDown("Left")) {
+			if (mLock == false)
+			{
+				if (m.x > g.rect.x && m.x < g.rect.Right) {
+					if (m.y > g.rect.y && m.y < g.rect.Bottom) {
+						console.log("clicked on red!");	
+					};
+				};
+			}
+		}
+	
+		if (m.AnyButtonDown()) {
+			mLock = true;
+		}
+		else {
+			mLock = false;
+		}
+		
+		g.rect.moveToCoords(g.x, g.y);
 	}
 	
 	// Call this from your game draw().
 	// It can draw itself if you pass canvas to it.
 	g.draw = function (sb) {
 		sb.DrawRect(g.rect, g.c);
+		sb.DrawString(Font("Arial", 16, true, true), (new Vector2(10,10)), g.rect.x.toString() + " - " + g.rect.Right.toString(), "white");
 	}
 
 	this.init(x, y, w, h, c);

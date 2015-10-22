@@ -11,7 +11,8 @@ function game(){
 	   	surface.height = window.innerHeight; // Set height.
 		
 		g.k = new Keyboard();
-		
+		g.m = new Mouse();
+
 		g.spriteBatch = new SpriteBatch(canvas);
 		g.loadContent(); // Load the content for your objects.
 
@@ -34,7 +35,7 @@ function game(){
 	
 	// Main loop.
 	g.update = function(){
-		player.update(g.k);
+		player.update(g.k, g.m);
 
 		g.draw(); //Draw!
 	}
