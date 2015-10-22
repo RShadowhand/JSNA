@@ -29,6 +29,8 @@ function Mouse() {
 
 	var buttonScheme = {0: [], 1: ["Left"], 2: ["Right"], 3:["Left","Right"], 4: ["Middle"], 5: ["Left","Middle"], 6: ["Right","Middle"], 7: ["Left","Right","Middle"]};
 	g.Buttons = buttonScheme[0];
+	var oldButtons = g.Buttons;
+	
 	g.Rectangle = new Rectangle(0,0,1,1);
 
 	g.IsButtonDown = function(button){
@@ -40,8 +42,22 @@ function Mouse() {
 	g.AnyButtonDown = function(){
 		return (g.Buttons.length > 0)
 	}
+	
+	var mLock = {"Left": false, "Right": false, "Middle": false}
+	g.onClick = function(button, callback){	
+		if (oldButtons.indexOf(button) < 0 && g.IsButtonDown(button) && mLock[button] == false) {
+			callback();
+		};
+		if (g.IsButtonDown(button)) {
+			mLock[button] = true;
+		}
+		else {
+			mLock[button] = false;
+		}
+	}
 
 	function setKeys(key){
+		oldButtons = g.Buttons;
 		g.Buttons = buttonScheme[key];
 	}
 

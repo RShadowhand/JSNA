@@ -35,24 +35,22 @@ function Player(x, y, w, h, c) {
 		if (k.IsKeyDown("ArrowRight")) {
 			g.x += 5;
 		}
-
-		if (m.Rectangle.Intersects(g.rect)) {
-			g.c = "green";
-		}
-		else {
-			g.c = "red";
-		}
 	
-		if (m.IsButtonDown("Left")) {
-			if (mLock == false)
-			{
-				if (m.x > g.rect.x && m.x < g.rect.Right) {
-					if (m.y > g.rect.y && m.y < g.rect.Bottom) {
-						console.log("clicked on red!");	
-					};
-				};
+		m.onClick("Left", 
+			function(){
+				if(m.Rectangle.Intersects(g.rect)){
+					console.log("clicked on red!");
+				}
 			}
-		}
+		);
+
+		m.onClick("Middle", 
+			function(){
+				if(m.Rectangle.Intersects(g.rect)){
+					console.log("clicked on middlered!");	
+				}
+			}
+		);
 
 		if (m.AnyButtonDown()) {
 			mLock = true;
