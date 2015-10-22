@@ -77,10 +77,10 @@ function Rectangle(x,y,w,h) {
 	}
 
 	g.Intersects = function(Rectangle){
-		return (Rectangle.x < g.x + g.w) &&
-            (g.x < (Rectangle.x + Rectangle.w)) &&
-            (Rectangle.y < g.y + g.h) &&
-            (g.y < Rectangle.y + Rectangle.h); 
+		return (Rectangle.x < g.Right) &&
+            (g.x < (Rectangle.Right)) &&
+            (Rectangle.y < g.Bottom) &&
+            (g.y < Rectangle.Bottom); 
 	}
 
 	function UpdateValues(){
