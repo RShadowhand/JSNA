@@ -1,3 +1,4 @@
+// Class template, to create your own classes
 function Obj(args) {
 	var g = this; // Needed for scoping.
 

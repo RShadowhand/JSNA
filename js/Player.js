@@ -36,6 +36,13 @@ function Player(x, y, w, h, c) {
 			g.x += 5;
 		}
 
+		if (m.Rectangle.Intersects(g.rect)) {
+			g.c = "green";
+		}
+		else {
+			g.c = "red";
+		}
+	
 		if (m.IsButtonDown("Left")) {
 			if (mLock == false)
 			{
@@ -47,13 +54,6 @@ function Player(x, y, w, h, c) {
 			}
 		}
 
-		if (m.Rectangle.Intersects(g.rect)) {
-			g.c = "green";
-		}
-		else {
-			g.c = "red";
-		}
-	
 		if (m.AnyButtonDown()) {
 			mLock = true;
 		}
