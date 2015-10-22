@@ -29,6 +29,7 @@ function Mouse() {
 
 	var buttonScheme = {0: [], 1: ["Left"], 2: ["Right"], 3:["Left","Right"], 4: ["Middle"], 5: ["Left","Middle"], 6: ["Right","Middle"], 7: ["Left","Right","Middle"]};
 	g.Buttons = buttonScheme[0];
+	g.Rectangle = new Rectangle(0,0,1,1);
 
 	g.IsButtonDown = function(button){
 		return (g.Buttons.indexOf(button) > -1);
@@ -47,6 +48,7 @@ function Mouse() {
 	function changePos(e){
 		g.x = e.clientX;
 		g.y = e.clientY;
+		g.Rectangle.moveToCoords(g.x, g.y);
 	}
 	window.addEventListener('mousedown', function(e) { setKeys(e.buttons); }, false);
 	window.addEventListener('mouseup', function(e) { setKeys(e.buttons); }, false);
@@ -72,6 +74,13 @@ function Rectangle(x,y,w,h) {
 		g.x	= Vector2.x;
 		g.y	= Vector2.y;
 		UpdateValues()
+	}
+
+	g.Intersects = function(Rectangle){
+		return (Rectangle.x < g.x + g.w) &&
+            (g.x < (Rectangle.x + Rectangle.w)) &&
+            (Rectangle.y < g.y + g.h) &&
+            (g.y < Rectangle.y + Rectangle.h); 
 	}
 
 	function UpdateValues(){

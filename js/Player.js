@@ -46,6 +46,13 @@ function Player(x, y, w, h, c) {
 				};
 			}
 		}
+
+		if (m.Rectangle.Intersects(g.rect)) {
+			g.c = "green";
+		}
+		else {
+			g.c = "red";
+		}
 	
 		if (m.AnyButtonDown()) {
 			mLock = true;
@@ -53,7 +60,7 @@ function Player(x, y, w, h, c) {
 		else {
 			mLock = false;
 		}
-		
+
 		g.rect.moveToCoords(g.x, g.y);
 	}
 	
@@ -61,7 +68,7 @@ function Player(x, y, w, h, c) {
 	// It can draw itself if you pass canvas to it.
 	g.draw = function (sb) {
 		sb.DrawRect(g.rect, g.c);
-		sb.DrawString(Font("Arial", 16, true, true), (new Vector2(10,10)), g.rect.x.toString() + " - " + g.rect.Right.toString(), "white");
+		//sb.DrawString(Font("Arial", 16, true, true), (new Vector2(10,10)), g.rect.x.toString() + " - " + g.rect.Right.toString(), "white");
 	}
 
 	this.init(x, y, w, h, c);
