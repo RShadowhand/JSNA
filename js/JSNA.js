@@ -137,6 +137,10 @@ function SpriteBatch(canvas) {
 		canvas.fillRect(0,0, surface.width, surface.height);
 	}
 
+	// g.Draw = function(Rectangle, img, Color){
+	// 	canvas.drawImage(img, Rectangle.x, Rectangle.y); // WE'LL SEE LATER
+	// }
+
 	g.DrawRect = function(Rectangle, Color){
 		canvas.fillStyle = Color;
 		canvas.fillRect(Rectangle.x, Rectangle.y, Rectangle.w, Rectangle.h);
@@ -147,4 +151,8 @@ function SpriteBatch(canvas) {
 		canvas.font = Font;
 		canvas.fillText(Text, Vector2.x, Vector2.y);
 	}
+}
+
+function Texture2D(url){
+	// to fill later
 }

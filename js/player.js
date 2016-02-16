@@ -13,10 +13,11 @@ function Player(x, y, w, h, c) {
 		g.c = c;
 	}
 	
+	var sprite;
 	// Load your content for this object here.
 	// Call this from game's loadContent()
 	g.loadContent = function(){
-
+		
 	}
 
 	// Call this from your game update().
